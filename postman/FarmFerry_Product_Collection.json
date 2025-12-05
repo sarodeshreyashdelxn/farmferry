@@ -1,0 +1,778 @@
+{
+  "info": {
+    "name": "FarmFerry API - Products",
+    "description": "API collection for testing FarmFerry product endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "description": "Product management endpoints",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products?page=1&limit=10&category=&sort=price&minPrice=0&maxPrice=1000",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "category",
+                  "value": ""
+                },
+                {
+                  "key": "sort",
+                  "value": "price"
+                },
+                {
+                  "key": "minPrice",
+                  "value": "0"
+                },
+                {
+                  "key": "maxPrice",
+                  "value": "1000"
+                }
+              ]
+            },
+            "description": "Get all products with pagination and filters"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Product By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product to retrieve"
+                }
+              ]
+            },
+            "description": "Get a specific product by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Product (Supplier)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Organic Apples\",\n    \"description\": \"Fresh organic apples from local farms\",\n    \"price\": 5.99,\n    \"stock\": 100,\n    \"category\": \"{{categoryId}}\",\n    \"images\": [],\n    \"tags\": [\"organic\", \"fruit\", \"local\"],\n    \"isOrganic\": true,\n    \"unit\": \"kg\",\n    \"unitValue\": 1,\n    \"nutritionalInfo\": {\n        \"calories\": 52,\n        \"protein\": 0.3,\n        \"carbs\": 14,\n        \"fat\": 0.2,\n        \"fiber\": 2.4\n    },\n    \"origin\": \"Local Farm\",\n    \"harvestDate\": \"2023-05-15\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products"]
+            },
+            "description": "Create a new product (supplier only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product (Supplier)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Updated Organic Apples\",\n    \"description\": \"Updated description for organic apples\",\n    \"price\": 6.99,\n    \"stock\": 120,\n    \"tags\": [\"organic\", \"fruit\", \"premium\"],\n    \"isOrganic\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product to update"
+                }
+              ]
+            },
+            "description": "Update a product (supplier only, must be the product owner)"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product (Supplier)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product to delete"
+                }
+              ]
+            },
+            "description": "Delete a product (supplier only, must be the product owner)"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Product Image",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/path/to/image.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId/images",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId", "images"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product to upload image for"
+                }
+              ]
+            },
+            "description": "Upload an image for a product (supplier only, must be the product owner)"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product Image",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId/images/:imageId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId", "images", ":imageId"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product"
+                },
+                {
+                  "key": "imageId",
+                  "value": "{{imageId}}",
+                  "description": "ID of the image to delete"
+                }
+              ]
+            },
+            "description": "Delete an image from a product (supplier only, must be the product owner)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product Stock",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"stock\": 150\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId/stock",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId", "stock"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product to update stock for"
+                }
+              ]
+            },
+            "description": "Update a product's stock (supplier only, must be the product owner)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Supplier Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/supplier/me?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", "supplier", "me"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get all products for the logged in supplier"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Featured Products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/featured",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", "featured"]
+            },
+            "description": "Get featured products"
+          },
+          "response": []
+        },
+        {
+          "name": "Get New Arrivals",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/new-arrivals?limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", "new-arrivals"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get newly added products"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Best Selling Products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/best-selling?limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", "best-selling"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get best selling products"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "description": "Category management endpoints",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "categories"]
+            },
+            "description": "Get all product categories"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Category By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/categories/:categoryId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "categories", ":categoryId"],
+              "variable": [
+                {
+                  "key": "categoryId",
+                  "value": "{{categoryId}}",
+                  "description": "ID of the category to retrieve"
+                }
+              ]
+            },
+            "description": "Get a specific category by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Category (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Fruits\",\n    \"description\": \"Fresh fruits from local farms\",\n    \"parentCategory\": null\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "categories"]
+            },
+            "description": "Create a new category (admin only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Category (Admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Updated Fruits\",\n    \"description\": \"Updated description for fruits category\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/categories/:categoryId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "categories", ":categoryId"],
+              "variable": [
+                {
+                  "key": "categoryId",
+                  "value": "{{categoryId}}",
+                  "description": "ID of the category to update"
+                }
+              ]
+            },
+            "description": "Update a category (admin only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Category (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/categories/:categoryId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "categories", ":categoryId"],
+              "variable": [
+                {
+                  "key": "categoryId",
+                  "value": "{{categoryId}}",
+                  "description": "ID of the category to delete"
+                }
+              ]
+            },
+            "description": "Delete a category (admin only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Category Image (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/path/to/image.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/categories/:categoryId/image",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "categories", ":categoryId", "image"],
+              "variable": [
+                {
+                  "key": "categoryId",
+                  "value": "{{categoryId}}",
+                  "description": "ID of the category to upload image for"
+                }
+              ]
+            },
+            "description": "Upload an image for a category (admin only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Products By Category",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/categories/:categoryId/products?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "categories", ":categoryId", "products"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "categoryId",
+                  "value": "{{categoryId}}",
+                  "description": "ID of the category to get products for"
+                }
+              ]
+            },
+            "description": "Get all products in a specific category"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "description": "Product review endpoints",
+      "item": [
+        {
+          "name": "Get Product Reviews",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId/reviews?page=1&limit=10&sort=-createdAt",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId", "reviews"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "-createdAt"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product to get reviews for"
+                }
+              ]
+            },
+            "description": "Get all reviews for a specific product"
+          },
+          "response": []
+        },
+        {
+          "name": "Add Product Review (Customer)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rating\": 5,\n    \"comment\": \"Great product! Very fresh and tasty.\",\n    \"title\": \"Excellent Quality\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId/reviews",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId", "reviews"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product to review"
+                }
+              ]
+            },
+            "description": "Add a review for a product (customer only, must have purchased the product)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product Review (Customer)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rating\": 4,\n    \"comment\": \"Updated comment: Good product but could be better.\",\n    \"title\": \"Good Quality\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId/reviews/:reviewId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId", "reviews", ":reviewId"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product"
+                },
+                {
+                  "key": "reviewId",
+                  "value": "{{reviewId}}",
+                  "description": "ID of the review to update"
+                }
+              ]
+            },
+            "description": "Update a product review (customer only, must be the review owner)"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product Review (Customer)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId/reviews/:reviewId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId", "reviews", ":reviewId"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product"
+                },
+                {
+                  "key": "reviewId",
+                  "value": "{{reviewId}}",
+                  "description": "ID of the review to delete"
+                }
+              ]
+            },
+            "description": "Delete a product review (customer only, must be the review owner)"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Review Image (Customer)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/path/to/image.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId/reviews/:reviewId/images",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId", "reviews", ":reviewId", "images"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product"
+                },
+                {
+                  "key": "reviewId",
+                  "value": "{{reviewId}}",
+                  "description": "ID of the review to upload image for"
+                }
+              ]
+            },
+            "description": "Upload an image for a review (customer only, must be the review owner)"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Review Image (Customer)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/products/:productId/reviews/:reviewId/images/:imageId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "products", ":productId", "reviews", ":reviewId", "images", ":imageId"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "{{productId}}",
+                  "description": "ID of the product"
+                },
+                {
+                  "key": "reviewId",
+                  "value": "{{reviewId}}",
+                  "description": "ID of the review"
+                },
+                {
+                  "key": "imageId",
+                  "value": "{{imageId}}",
+                  "description": "ID of the image to delete"
+                }
+              ]
+            },
+            "description": "Delete an image from a review (customer only, must be the review owner)"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,763 @@
+{
+  "info": {
+    "name": "FarmFerry API - Analytics",
+    "description": "API collection for testing FarmFerry analytics endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Admin Analytics",
+      "description": "Admin analytics endpoints",
+      "item": [
+        {
+          "name": "Dashboard Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/dashboard",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "dashboard"]
+            },
+            "description": "Get dashboard analytics overview for admin"
+          },
+          "response": []
+        },
+        {
+          "name": "Sales Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/sales?startDate=2023-01-01&endDate=2023-12-31&interval=monthly",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "sales"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "interval",
+                  "value": "monthly"
+                }
+              ]
+            },
+            "description": "Get sales analytics with date range filtering and interval options"
+          },
+          "response": []
+        },
+        {
+          "name": "Product Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/products?startDate=2023-01-01&endDate=2023-12-31&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "products"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get product analytics with date range filtering and limit"
+          },
+          "response": []
+        },
+        {
+          "name": "Customer Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/customers?startDate=2023-01-01&endDate=2023-12-31&interval=monthly",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "customers"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "interval",
+                  "value": "monthly"
+                }
+              ]
+            },
+            "description": "Get customer analytics with date range filtering and interval options"
+          },
+          "response": []
+        },
+        {
+          "name": "Supplier Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/suppliers?startDate=2023-01-01&endDate=2023-12-31&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "suppliers"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get supplier analytics with date range filtering and limit"
+          },
+          "response": []
+        },
+        {
+          "name": "Delivery Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/delivery?startDate=2023-01-01&endDate=2023-12-31&interval=monthly",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "delivery"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "interval",
+                  "value": "monthly"
+                }
+              ]
+            },
+            "description": "Get delivery analytics with date range filtering and interval options"
+          },
+          "response": []
+        },
+        {
+          "name": "Revenue Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/revenue?startDate=2023-01-01&endDate=2023-12-31&interval=monthly",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "revenue"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "interval",
+                  "value": "monthly"
+                }
+              ]
+            },
+            "description": "Get revenue analytics with date range filtering and interval options"
+          },
+          "response": []
+        },
+        {
+          "name": "Category Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/categories?startDate=2023-01-01&endDate=2023-12-31&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "categories"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get category analytics with date range filtering and limit"
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Sales Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/reports/sales?startDate=2023-01-01&endDate=2023-12-31&format=csv",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "reports", "sales"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "format",
+                  "value": "csv"
+                }
+              ]
+            },
+            "description": "Generate a sales report with date range filtering and format options"
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Product Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/reports/products?startDate=2023-01-01&endDate=2023-12-31&format=csv",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "reports", "products"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "format",
+                  "value": "csv"
+                }
+              ]
+            },
+            "description": "Generate a product report with date range filtering and format options"
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Customer Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/reports/customers?startDate=2023-01-01&endDate=2023-12-31&format=csv",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "reports", "customers"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "format",
+                  "value": "csv"
+                }
+              ]
+            },
+            "description": "Generate a customer report with date range filtering and format options"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Supplier Analytics",
+      "description": "Supplier analytics endpoints",
+      "item": [
+        {
+          "name": "Dashboard Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/analytics/dashboard",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "analytics", "dashboard"]
+            },
+            "description": "Get dashboard analytics overview for supplier"
+          },
+          "response": []
+        },
+        {
+          "name": "Sales Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/analytics/sales?startDate=2023-01-01&endDate=2023-12-31&interval=monthly",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "analytics", "sales"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "interval",
+                  "value": "monthly"
+                }
+              ]
+            },
+            "description": "Get sales analytics for supplier with date range filtering and interval options"
+          },
+          "response": []
+        },
+        {
+          "name": "Product Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/analytics/products?startDate=2023-01-01&endDate=2023-12-31&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "analytics", "products"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get product analytics for supplier with date range filtering and limit"
+          },
+          "response": []
+        },
+        {
+          "name": "Customer Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/analytics/customers?startDate=2023-01-01&endDate=2023-12-31&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "analytics", "customers"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get customer analytics for supplier with date range filtering and limit"
+          },
+          "response": []
+        },
+        {
+          "name": "Revenue Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/analytics/revenue?startDate=2023-01-01&endDate=2023-12-31&interval=monthly",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "analytics", "revenue"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "interval",
+                  "value": "monthly"
+                }
+              ]
+            },
+            "description": "Get revenue analytics for supplier with date range filtering and interval options"
+          },
+          "response": []
+        },
+        {
+          "name": "Category Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/analytics/categories?startDate=2023-01-01&endDate=2023-12-31&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "analytics", "categories"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get category analytics for supplier with date range filtering and limit"
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Sales Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/analytics/reports/sales?startDate=2023-01-01&endDate=2023-12-31&format=csv",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "analytics", "reports", "sales"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "format",
+                  "value": "csv"
+                }
+              ]
+            },
+            "description": "Generate a sales report for supplier with date range filtering and format options"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Delivery Analytics",
+      "description": "Delivery analytics endpoints",
+      "item": [
+        {
+          "name": "Dashboard Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/analytics/dashboard",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "analytics", "dashboard"]
+            },
+            "description": "Get dashboard analytics overview for delivery associate"
+          },
+          "response": []
+        },
+        {
+          "name": "Delivery Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/analytics/deliveries?startDate=2023-01-01&endDate=2023-12-31&interval=monthly",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "analytics", "deliveries"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "interval",
+                  "value": "monthly"
+                }
+              ]
+            },
+            "description": "Get delivery analytics for delivery associate with date range filtering and interval options"
+          },
+          "response": []
+        },
+        {
+          "name": "Earnings Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/analytics/earnings?startDate=2023-01-01&endDate=2023-12-31&interval=monthly",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "analytics", "earnings"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "interval",
+                  "value": "monthly"
+                }
+              ]
+            },
+            "description": "Get earnings analytics for delivery associate with date range filtering and interval options"
+          },
+          "response": []
+        },
+        {
+          "name": "Performance Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/analytics/performance?startDate=2023-01-01&endDate=2023-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "analytics", "performance"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                }
+              ]
+            },
+            "description": "Get performance analytics for delivery associate with date range filtering"
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Earnings Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/analytics/reports/earnings?startDate=2023-01-01&endDate=2023-12-31&format=csv",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "analytics", "reports", "earnings"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                },
+                {
+                  "key": "format",
+                  "value": "csv"
+                }
+              ]
+            },
+            "description": "Generate an earnings report for delivery associate with date range filtering and format options"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}

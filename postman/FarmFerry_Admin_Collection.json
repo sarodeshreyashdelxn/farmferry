@@ -1,0 +1,825 @@
+{
+  "info": {
+    "name": "FarmFerry API - Admin",
+    "description": "API collection for testing FarmFerry admin endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Admin",
+      "description": "Admin management endpoints",
+      "item": [
+        {
+          "name": "Get Admin Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "profile"]
+            },
+            "description": "Get the profile of the currently logged in admin"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Admin Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Updated Admin Name\",\n    \"email\": \"admin@farmferry.com\",\n    \"phone\": \"9876543210\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "profile"]
+            },
+            "description": "Update the profile of the currently logged in admin"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Customers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/customers?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "customers"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get all customers with pagination"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Customer By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/customers/:customerId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "customers", ":customerId"],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "{{customerId}}",
+                  "description": "ID of the customer to retrieve"
+                }
+              ]
+            },
+            "description": "Get a specific customer by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Customer Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/customers/:customerId/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "customers", ":customerId", "status"],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "{{customerId}}",
+                  "description": "ID of the customer to update"
+                }
+              ]
+            },
+            "description": "Update a customer's active status"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Customer",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/customers/:customerId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "customers", ":customerId"],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "{{customerId}}",
+                  "description": "ID of the customer to delete"
+                }
+              ]
+            },
+            "description": "Delete a customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Suppliers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/suppliers?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "suppliers"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get all suppliers with pagination"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Supplier By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/suppliers/:supplierId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "suppliers", ":supplierId"],
+              "variable": [
+                {
+                  "key": "supplierId",
+                  "value": "{{supplierId}}",
+                  "description": "ID of the supplier to retrieve"
+                }
+              ]
+            },
+            "description": "Get a specific supplier by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Supplier Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"isActive\": true,\n    \"isVerified\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/suppliers/:supplierId/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "suppliers", ":supplierId", "status"],
+              "variable": [
+                {
+                  "key": "supplierId",
+                  "value": "{{supplierId}}",
+                  "description": "ID of the supplier to update"
+                }
+              ]
+            },
+            "description": "Update a supplier's active and verification status"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Supplier",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/suppliers/:supplierId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "suppliers", ":supplierId"],
+              "variable": [
+                {
+                  "key": "supplierId",
+                  "value": "{{supplierId}}",
+                  "description": "ID of the supplier to delete"
+                }
+              ]
+            },
+            "description": "Delete a supplier"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Delivery Associates",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/delivery-associates?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "delivery-associates"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get all delivery associates with pagination"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Delivery Associate By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/delivery-associates/:deliveryAssociateId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "delivery-associates", ":deliveryAssociateId"],
+              "variable": [
+                {
+                  "key": "deliveryAssociateId",
+                  "value": "{{deliveryAssociateId}}",
+                  "description": "ID of the delivery associate to retrieve"
+                }
+              ]
+            },
+            "description": "Get a specific delivery associate by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Delivery Associate Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"isActive\": true,\n    \"isVerified\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/delivery-associates/:deliveryAssociateId/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "delivery-associates", ":deliveryAssociateId", "status"],
+              "variable": [
+                {
+                  "key": "deliveryAssociateId",
+                  "value": "{{deliveryAssociateId}}",
+                  "description": "ID of the delivery associate to update"
+                }
+              ]
+            },
+            "description": "Update a delivery associate's active and verification status"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Delivery Associate",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/delivery-associates/:deliveryAssociateId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "delivery-associates", ":deliveryAssociateId"],
+              "variable": [
+                {
+                  "key": "deliveryAssociateId",
+                  "value": "{{deliveryAssociateId}}",
+                  "description": "ID of the delivery associate to delete"
+                }
+              ]
+            },
+            "description": "Delete a delivery associate"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/orders?page=1&limit=10&status=all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "orders"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "status",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Get all orders with pagination and optional status filter"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/orders/:orderId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "orders", ":orderId"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to retrieve"
+                }
+              ]
+            },
+            "description": "Get a specific order by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\": \"processing\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/orders/:orderId/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "orders", ":orderId", "status"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to update"
+                }
+              ]
+            },
+            "description": "Update an order's status"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Payment Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"paymentStatus\": \"paid\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/orders/:orderId/payment-status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "orders", ":orderId", "payment-status"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to update"
+                }
+              ]
+            },
+            "description": "Update an order's payment status"
+          },
+          "response": []
+        },
+        {
+          "name": "Assign Delivery Associate",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"deliveryAssociateId\": \"{{deliveryAssociateId}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/orders/:orderId/assign-delivery",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "orders", ":orderId", "assign-delivery"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to update"
+                }
+              ]
+            },
+            "description": "Assign a delivery associate to an order"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Dashboard Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/dashboard?startDate=2023-01-01&endDate=2023-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "dashboard"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                }
+              ]
+            },
+            "description": "Get dashboard analytics with optional date range filter"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Sales Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/sales?startDate=2023-01-01&endDate=2023-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "sales"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                }
+              ]
+            },
+            "description": "Get sales analytics with optional date range filter"
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/users?startDate=2023-01-01&endDate=2023-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "users"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                }
+              ]
+            },
+            "description": "Get user analytics with optional date range filter"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/analytics/orders?startDate=2023-01-01&endDate=2023-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "analytics", "orders"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                }
+              ]
+            },
+            "description": "Get order analytics with optional date range filter"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Site Settings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/settings/site",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "settings", "site"]
+            },
+            "description": "Get site settings"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Site Settings",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"siteName\": \"FarmFerry\",\n    \"siteDescription\": \"Farm to Table Delivery\",\n    \"contactEmail\": \"contact@farmferry.com\",\n    \"contactPhone\": \"1234567890\",\n    \"address\": \"123 Farm Street, Farmville\",\n    \"socialLinks\": {\n        \"facebook\": \"https://facebook.com/farmferry\",\n        \"instagram\": \"https://instagram.com/farmferry\",\n        \"twitter\": \"https://twitter.com/farmferry\"\n    },\n    \"shippingFee\": 5.99,\n    \"freeShippingThreshold\": 50\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/settings/site",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "settings", "site"]
+            },
+            "description": "Update site settings"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Payment Settings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/settings/payment",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "settings", "payment"]
+            },
+            "description": "Get payment settings"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Payment Settings",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"enabledPaymentMethods\": [\"card\", \"upi\", \"cod\"],\n    \"stripeEnabled\": true,\n    \"razorpayEnabled\": true,\n    \"codEnabled\": true,\n    \"taxRate\": 5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/settings/payment",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "settings", "payment"]
+            },
+            "description": "Update payment settings"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Admin User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"New Admin\",\n    \"email\": \"newadmin@farmferry.com\",\n    \"password\": \"AdminPassword123!\",\n    \"phone\": \"9876543210\",\n    \"role\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "create"]
+            },
+            "description": "Create a new admin user (super admin only)"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}

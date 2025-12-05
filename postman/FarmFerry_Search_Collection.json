@@ -1,0 +1,219 @@
+{
+  "info": {
+    "name": "FarmFerry API - Search",
+    "description": "API collection for testing FarmFerry search endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Search",
+      "description": "Search endpoints",
+      "item": [
+        {
+          "name": "Search Products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/search/products?keyword=organic&category={{categoryId}}&supplier={{supplierId}}&minPrice=0&maxPrice=100&tags=organic,fresh&isOrganic=true&page=1&limit=10&sort=price",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "search", "products"],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "organic"
+                },
+                {
+                  "key": "category",
+                  "value": "{{categoryId}}"
+                },
+                {
+                  "key": "supplier",
+                  "value": "{{supplierId}}"
+                },
+                {
+                  "key": "minPrice",
+                  "value": "0"
+                },
+                {
+                  "key": "maxPrice",
+                  "value": "100"
+                },
+                {
+                  "key": "tags",
+                  "value": "organic,fresh"
+                },
+                {
+                  "key": "isOrganic",
+                  "value": "true"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "price"
+                }
+              ]
+            },
+            "description": "Search for products with various filters, sorting, and pagination"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Suppliers",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/search/suppliers?keyword=farm&tags=organic,local&latitude=37.7749&longitude=-122.4194&radius=10&page=1&limit=10&sort=distance",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "search", "suppliers"],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "farm"
+                },
+                {
+                  "key": "tags",
+                  "value": "organic,local"
+                },
+                {
+                  "key": "latitude",
+                  "value": "37.7749"
+                },
+                {
+                  "key": "longitude",
+                  "value": "-122.4194"
+                },
+                {
+                  "key": "radius",
+                  "value": "10"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "distance"
+                }
+              ]
+            },
+            "description": "Search for suppliers with keyword, tags, geolocation, sorting, and pagination"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Categories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/search/categories?keyword=fruit&page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "search", "categories"],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "fruit"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Search for categories with keyword filtering and pagination"
+          },
+          "response": []
+        },
+        {
+          "name": "Autocomplete",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/search/autocomplete?query=org&type=product",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "search", "autocomplete"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "org"
+                },
+                {
+                  "key": "type",
+                  "value": "product"
+                }
+              ]
+            },
+            "description": "Get autocomplete suggestions for search queries"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Analytics (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/search/analytics?startDate=2023-01-01&endDate=2023-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "search", "analytics"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                }
+              ]
+            },
+            "description": "Get search analytics data (admin only)"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}

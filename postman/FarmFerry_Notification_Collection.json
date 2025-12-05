@@ -1,0 +1,400 @@
+{
+  "info": {
+    "name": "FarmFerry API - Notifications",
+    "description": "API collection for testing FarmFerry notification endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Notifications",
+      "description": "Notification management endpoints",
+      "item": [
+        {
+          "name": "Get All Notifications (Customer)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/notifications?page=1&limit=10&type=all&read=all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "notifications"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "type",
+                  "value": "all"
+                },
+                {
+                  "key": "read",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Get all notifications for the logged in customer with pagination and optional filters"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Notifications (Supplier)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/notifications?page=1&limit=10&type=all&read=all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "notifications"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "type",
+                  "value": "all"
+                },
+                {
+                  "key": "read",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Get all notifications for the logged in supplier with pagination and optional filters"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Notifications (Delivery)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/notifications?page=1&limit=10&type=all&read=all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "notifications"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "type",
+                  "value": "all"
+                },
+                {
+                  "key": "read",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Get all notifications for the logged in delivery associate with pagination and optional filters"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Notifications (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/notifications?page=1&limit=10&type=all&read=all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "notifications"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "type",
+                  "value": "all"
+                },
+                {
+                  "key": "read",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Get all notifications for the logged in admin with pagination and optional filters"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Notification By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/notifications/:notificationId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "notifications", ":notificationId"],
+              "variable": [
+                {
+                  "key": "notificationId",
+                  "value": "{{notificationId}}",
+                  "description": "ID of the notification to retrieve"
+                }
+              ]
+            },
+            "description": "Get a specific notification by ID (user must be the notification recipient)"
+          },
+          "response": []
+        },
+        {
+          "name": "Mark Notification as Read",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/notifications/:notificationId/read",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "notifications", ":notificationId", "read"],
+              "variable": [
+                {
+                  "key": "notificationId",
+                  "value": "{{notificationId}}",
+                  "description": "ID of the notification to mark as read"
+                }
+              ]
+            },
+            "description": "Mark a notification as read (user must be the notification recipient)"
+          },
+          "response": []
+        },
+        {
+          "name": "Mark All Notifications as Read",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/notifications/read-all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "notifications", "read-all"]
+            },
+            "description": "Mark all notifications as read for the logged in user"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Notification",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/notifications/:notificationId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "notifications", ":notificationId"],
+              "variable": [
+                {
+                  "key": "notificationId",
+                  "value": "{{notificationId}}",
+                  "description": "ID of the notification to delete"
+                }
+              ]
+            },
+            "description": "Delete a notification (user must be the notification recipient)"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete All Notifications",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/notifications/delete-all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "notifications", "delete-all"]
+            },
+            "description": "Delete all notifications for the logged in user"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Notification Count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/notifications/count",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "notifications", "count"]
+            },
+            "description": "Get the count of unread notifications for the logged in user"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Notification (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"recipient\": \"{{userId}}\",\n    \"title\": \"Important Notification\",\n    \"message\": \"This is an important notification from the admin.\",\n    \"type\": \"info\",\n    \"link\": \"/dashboard\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/notifications",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "notifications"]
+            },
+            "description": "Create a notification for a specific user (admin only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Bulk Notifications (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"recipients\": {\n        \"role\": \"customer\",\n        \"ids\": []\n    },\n    \"title\": \"Bulk Notification\",\n    \"message\": \"This is a bulk notification for all customers.\",\n    \"type\": \"info\",\n    \"link\": \"/promotions\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/admin/notifications/bulk",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "admin", "notifications", "bulk"]
+            },
+            "description": "Create notifications for multiple users or all users of a specific role (admin only)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "WebSocket Notifications",
+      "description": "WebSocket notification endpoints",
+      "item": [
+        {
+          "name": "Connect to WebSocket",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/ws/connect",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "ws", "connect"]
+            },
+            "description": "Get WebSocket connection details for real-time notifications"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}

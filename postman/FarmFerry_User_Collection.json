@@ -1,0 +1,827 @@
+{
+  "info": {
+    "name": "FarmFerry API - User Profiles",
+    "description": "API collection for testing FarmFerry user profile endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Customer Profile",
+      "description": "Customer profile management endpoints",
+      "item": [
+        {
+          "name": "Get Customer Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "profile"]
+            },
+            "description": "Get the profile of the currently logged in customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Customer Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Updated Customer Name\",\n    \"phone\": \"9876543210\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "profile"]
+            },
+            "description": "Update the profile of the currently logged in customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Customer Address",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"address\": {\n        \"street\": \"456 Updated Street\",\n        \"city\": \"Updated City\",\n        \"state\": \"Updated State\",\n        \"zipCode\": \"54321\",\n        \"country\": \"Updated Country\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/address",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "address"]
+            },
+            "description": "Update the address of the currently logged in customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Add Additional Address",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"address\": {\n        \"street\": \"789 Additional Street\",\n        \"city\": \"Additional City\",\n        \"state\": \"Additional State\",\n        \"zipCode\": \"67890\",\n        \"country\": \"Additional Country\"\n    },\n    \"label\": \"Work\",\n    \"isDefault\": false\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/addresses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "addresses"]
+            },
+            "description": "Add an additional address for the currently logged in customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Additional Address",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"address\": {\n        \"street\": \"789 Updated Additional Street\",\n        \"city\": \"Updated Additional City\",\n        \"state\": \"Updated Additional State\",\n        \"zipCode\": \"67890\",\n        \"country\": \"Updated Additional Country\"\n    },\n    \"label\": \"Updated Work\",\n    \"isDefault\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/addresses/:addressId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "addresses", ":addressId"],
+              "variable": [
+                {
+                  "key": "addressId",
+                  "value": "{{addressId}}",
+                  "description": "ID of the address to update"
+                }
+              ]
+            },
+            "description": "Update an additional address for the currently logged in customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Additional Address",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/addresses/:addressId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "addresses", ":addressId"],
+              "variable": [
+                {
+                  "key": "addressId",
+                  "value": "{{addressId}}",
+                  "description": "ID of the address to delete"
+                }
+              ]
+            },
+            "description": "Delete an additional address for the currently logged in customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Addresses",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/addresses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "addresses"]
+            },
+            "description": "Get all addresses for the currently logged in customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Profile Picture",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/path/to/image.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/profile-picture",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "profile-picture"]
+            },
+            "description": "Upload a profile picture for the currently logged in customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"currentPassword\": \"Password123!\",\n    \"newPassword\": \"NewPassword123!\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/change-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "change-password"]
+            },
+            "description": "Change the password for the currently logged in customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/orders?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "orders"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get the order history for the currently logged in customer"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Supplier Profile",
+      "description": "Supplier profile management endpoints",
+      "item": [
+        {
+          "name": "Get Supplier Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "profile"]
+            },
+            "description": "Get the profile of the currently logged in supplier"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Supplier Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Updated Supplier Name\",\n    \"phone\": \"9876543210\",\n    \"businessName\": \"Updated Farm Supply\",\n    \"description\": \"Updated description for farm supply\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "profile"]
+            },
+            "description": "Update the profile of the currently logged in supplier"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Business Address",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"businessAddress\": {\n        \"street\": \"456 Updated Farm Road\",\n        \"city\": \"Updated Farm City\",\n        \"state\": \"Updated Farm State\",\n        \"zipCode\": \"54321\",\n        \"country\": \"Updated Farm Country\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/business-address",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "business-address"]
+            },
+            "description": "Update the business address of the currently logged in supplier"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Business Documents",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "documents",
+                  "type": "file",
+                  "src": ["/path/to/document1.pdf", "/path/to/document2.pdf"]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/documents",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "documents"]
+            },
+            "description": "Upload business documents for verification"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Business Logo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/path/to/logo.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/logo",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "logo"]
+            },
+            "description": "Upload a business logo for the currently logged in supplier"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Business Banner",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/path/to/banner.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/banner",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "banner"]
+            },
+            "description": "Upload a business banner for the currently logged in supplier"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Business Hours",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"businessHours\": {\n        \"monday\": { \"open\": \"09:00\", \"close\": \"17:00\" },\n        \"tuesday\": { \"open\": \"09:00\", \"close\": \"17:00\" },\n        \"wednesday\": { \"open\": \"09:00\", \"close\": \"17:00\" },\n        \"thursday\": { \"open\": \"09:00\", \"close\": \"17:00\" },\n        \"friday\": { \"open\": \"09:00\", \"close\": \"17:00\" },\n        \"saturday\": { \"open\": \"10:00\", \"close\": \"15:00\" },\n        \"sunday\": { \"open\": \"closed\", \"close\": \"closed\" }\n    }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/business-hours",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "business-hours"]
+            },
+            "description": "Update the business hours of the currently logged in supplier"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Bank Details",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"bankDetails\": {\n        \"accountName\": \"Test Farm Supply\",\n        \"accountNumber\": \"1234567890\",\n        \"bankName\": \"Test Bank\",\n        \"ifscCode\": \"TEST12345\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/bank-details",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "bank-details"]
+            },
+            "description": "Update the bank details of the currently logged in supplier"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Sales Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/analytics/sales?startDate=2023-01-01&endDate=2023-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "analytics", "sales"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                }
+              ]
+            },
+            "description": "Get sales analytics for the currently logged in supplier"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Product Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/suppliers/analytics/products?startDate=2023-01-01&endDate=2023-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "suppliers", "analytics", "products"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                }
+              ]
+            },
+            "description": "Get product analytics for the currently logged in supplier"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Delivery Associate Profile",
+      "description": "Delivery associate profile management endpoints",
+      "item": [
+        {
+          "name": "Get Delivery Associate Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "profile"]
+            },
+            "description": "Get the profile of the currently logged in delivery associate"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Delivery Associate Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Updated Delivery Associate Name\",\n    \"phone\": \"9876543210\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "profile"]
+            },
+            "description": "Update the profile of the currently logged in delivery associate"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Delivery Associate Address",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"address\": {\n        \"street\": \"456 Updated Delivery Road\",\n        \"city\": \"Updated Delivery City\",\n        \"state\": \"Updated Delivery State\",\n        \"zipCode\": \"54321\",\n        \"country\": \"Updated Delivery Country\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/address",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "address"]
+            },
+            "description": "Update the address of the currently logged in delivery associate"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Vehicle Information",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"vehicleType\": \"Car\",\n    \"vehicleNumber\": \"DEL-456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/vehicle",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "vehicle"]
+            },
+            "description": "Update the vehicle information of the currently logged in delivery associate"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Documents",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "documents",
+                  "type": "file",
+                  "src": ["/path/to/document1.pdf", "/path/to/document2.pdf"]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/documents",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "documents"]
+            },
+            "description": "Upload documents for verification"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Profile Picture",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/path/to/image.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/profile-picture",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "profile-picture"]
+            },
+            "description": "Upload a profile picture for the currently logged in delivery associate"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Availability Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"isAvailable\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/availability",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "availability"]
+            },
+            "description": "Update the availability status of the currently logged in delivery associate"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Current Location",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"location\": {\n        \"latitude\": 37.7749,\n        \"longitude\": -122.4194\n    }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/location",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "location"]
+            },
+            "description": "Update the current location of the currently logged in delivery associate"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Delivery Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/delivery/analytics?startDate=2023-01-01&endDate=2023-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "delivery", "analytics"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-12-31"
+                }
+              ]
+            },
+            "description": "Get delivery analytics for the currently logged in delivery associate"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}

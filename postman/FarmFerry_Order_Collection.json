@@ -1,0 +1,811 @@
+{
+  "info": {
+    "name": "FarmFerry API - Orders",
+    "description": "API collection for testing FarmFerry order endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Orders",
+      "description": "Order management endpoints",
+      "item": [
+        {
+          "name": "Get Customer Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders?page=1&limit=10&status=all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "status",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Get all orders for the logged in customer with pagination and optional status filter"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order By ID (Customer)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/:orderId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", ":orderId"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to retrieve"
+                }
+              ]
+            },
+            "description": "Get a specific order by ID (customer must be the order owner)"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Order (Customer)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"shippingAddress\": {\n        \"street\": \"123 Test Street\",\n        \"city\": \"Test City\",\n        \"state\": \"Test State\",\n        \"zipCode\": \"12345\",\n        \"country\": \"Test Country\"\n    },\n    \"paymentMethod\": \"card\",\n    \"useDefaultAddress\": false\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders"]
+            },
+            "description": "Create a new order from cart items (customer only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Order (Customer)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/:orderId/cancel",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", ":orderId", "cancel"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to cancel"
+                }
+              ]
+            },
+            "description": "Cancel an order (customer only, must be the order owner and order must be in pending status)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Supplier Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/supplier?page=1&limit=10&status=all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", "supplier"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "status",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Get all orders for the logged in supplier with pagination and optional status filter"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order By ID (Supplier)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/supplier/:orderId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", "supplier", ":orderId"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to retrieve"
+                }
+              ]
+            },
+            "description": "Get a specific order by ID (supplier must have products in the order)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status (Supplier)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{supplierToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\": \"processing\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/supplier/:orderId/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", "supplier", ":orderId", "status"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to update"
+                }
+              ]
+            },
+            "description": "Update an order's status (supplier must have products in the order)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Delivery Associate Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/delivery?page=1&limit=10&status=all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", "delivery"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "status",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Get all orders assigned to the logged in delivery associate with pagination and optional status filter"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order By ID (Delivery)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/delivery/:orderId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", "delivery", ":orderId"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to retrieve"
+                }
+              ]
+            },
+            "description": "Get a specific order by ID (delivery associate must be assigned to the order)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status (Delivery)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\": \"out_for_delivery\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/delivery/:orderId/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", "delivery", ":orderId", "status"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to update"
+                }
+              ]
+            },
+            "description": "Update an order's status (delivery associate must be assigned to the order)"
+          },
+          "response": []
+        },
+        {
+          "name": "Mark Order as Delivered",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"deliveryNotes\": \"Left at front door\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/delivery/:orderId/delivered",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", "delivery", ":orderId", "delivered"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to mark as delivered"
+                }
+              ]
+            },
+            "description": "Mark an order as delivered (delivery associate must be assigned to the order)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Delivery Location",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deliveryToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"location\": {\n        \"latitude\": 37.7749,\n        \"longitude\": -122.4194\n    }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/delivery/:orderId/location",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", "delivery", ":orderId", "location"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to update location for"
+                }
+              ]
+            },
+            "description": "Update the delivery location for an order (delivery associate must be assigned to the order)"
+          },
+          "response": []
+        },
+        {
+          "name": "Track Order",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/:orderId/track",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", ":orderId", "track"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to track"
+                }
+              ]
+            },
+            "description": "Track an order's status and location (customer must be the order owner)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order Invoice",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/:orderId/invoice",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", ":orderId", "invoice"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to get invoice for"
+                }
+              ]
+            },
+            "description": "Get the invoice for an order (customer must be the order owner)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "description": "Cart management endpoints",
+      "item": [
+        {
+          "name": "Get Cart",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "cart"]
+            },
+            "description": "Get the cart for the logged in customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Add Item to Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"productId\": \"{{productId}}\",\n    \"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "cart"]
+            },
+            "description": "Add an item to the cart (customer only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Cart Item",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"quantity\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/cart/:itemId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "cart", ":itemId"],
+              "variable": [
+                {
+                  "key": "itemId",
+                  "value": "{{cartItemId}}",
+                  "description": "ID of the cart item to update"
+                }
+              ]
+            },
+            "description": "Update the quantity of an item in the cart (customer only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Item from Cart",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/cart/:itemId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "cart", ":itemId"],
+              "variable": [
+                {
+                  "key": "itemId",
+                  "value": "{{cartItemId}}",
+                  "description": "ID of the cart item to remove"
+                }
+              ]
+            },
+            "description": "Remove an item from the cart (customer only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Clear Cart",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "cart"]
+            },
+            "description": "Clear all items from the cart (customer only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Apply Coupon",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"code\": \"WELCOME10\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/cart/apply-coupon",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "cart", "apply-coupon"]
+            },
+            "description": "Apply a coupon code to the cart (customer only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Coupon",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/cart/remove-coupon",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "cart", "remove-coupon"]
+            },
+            "description": "Remove the applied coupon from the cart (customer only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Cart Count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/cart/count",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "cart", "count"]
+            },
+            "description": "Get the number of items in the cart (customer only)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payment",
+      "description": "Payment processing endpoints",
+      "item": [
+        {
+          "name": "Create Payment Intent (Stripe)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"orderId\": \"{{orderId}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/payments/stripe/create-payment-intent",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "payments", "stripe", "create-payment-intent"]
+            },
+            "description": "Create a payment intent for Stripe payment (customer only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Order (Razorpay)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"orderId\": \"{{orderId}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/payments/razorpay/create-order",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "payments", "razorpay", "create-order"]
+            },
+            "description": "Create a Razorpay order (customer only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Payment (Razorpay)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"orderId\": \"{{orderId}}\",\n    \"razorpayPaymentId\": \"pay_123456789\",\n    \"razorpayOrderId\": \"order_123456789\",\n    \"razorpaySignature\": \"signature\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/payments/razorpay/verify-payment",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "payments", "razorpay", "verify-payment"]
+            },
+            "description": "Verify a Razorpay payment (customer only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Confirm COD Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"orderId\": \"{{orderId}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/payments/cod/confirm",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "payments", "cod", "confirm"]
+            },
+            "description": "Confirm a cash on delivery payment (customer only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Payment Methods",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/payments/methods",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "payments", "methods"]
+            },
+            "description": "Get available payment methods"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Payment Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/payments/status/:orderId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "payments", "status", ":orderId"],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "description": "ID of the order to get payment status for"
+                }
+              ]
+            },
+            "description": "Get the payment status for an order (customer must be the order owner)"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}
